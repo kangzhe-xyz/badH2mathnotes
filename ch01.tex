@@ -557,9 +557,8 @@ In this section we will learn how to use vectors to solve problems in geometry.
 	This concludes the proof.
 \end{proof}
 
-\section{Lines and Planes}
-\subsection{Lines}
-\begin{disc}
+\section{Lines}
+\begin{disc}\label{disc:line}
 	Recall that the general formula for a straight line in \(\R^2\) can be expressed in the form
 	\[ y = mx + c \] 
 	where \(m\) and \(c\) represent the gradient and \(y\)-intercept respectively.
@@ -576,7 +575,7 @@ In this section we will learn how to use vectors to solve problems in geometry.
 			\draw[latex-, thick] (0,2.3) -- (1,1.3) node[above right, pos=0.5] {\(\vec{m}\)};
 			\fill (0,0) circle (0.05);
 		\end{tikzpicture}
-		\caption{A line \(\ell\) that passes though \(A\) and is parallel to \(\vec{m}\).}
+		\caption{A line \(\ell\) that passes through \(A\) and is parallel to \(\vec{m}\).}
 	\end{figure}
 
 	Notice that \(\vec{a} + \vec{m}\) would give us the position vector of some point on the line. 
@@ -610,13 +609,15 @@ In this section we will learn how to use vectors to solve problems in geometry.
 		\end{tikzpicture}
 		\caption{A few of the possible \(\vec{a} + \lambda \vec{m}\) for some real values of \(\lambda\).}
 	\end{figure}
+	All these points that can be reached with this vector equation form the line \(\ell\).
+	This means we can describe the line \(\ell\) such that it is the \emph{union} of all these points with position vectors that can be expressed in the form \(\vec{a} + \lambda \vec{m}\), where \(\lambda \in \R\) (see Definition \ref{defn:line}).
 
 	In some sense, \(m\) in the equation \(y = mx + c\) is very similar to \(\lambda \vec{m}\), because it tells you what is the ``gradient'' of the line.
 	We call \(\vec{m}\) the \textbf{direction vector} of the line \(\ell\).
 	Furthermore, \(\vec{a}\) also is analogous to \(c\) in \(y = mx + c\), as it tells you a ``fixed'' point the line definitely passes though.
 \end{disc}
 
-\begin{defn}[Vector Equation of a Line]
+\begin{defn}[Vector Equation of a Line] \label{defn:line}
 	A \textbf{line} \(\ell\) that 
 	\begin{enumerate}
 		\item passes though a point with position vector \(\vec{a}\), and
@@ -626,4 +627,145 @@ In this section we will learn how to use vectors to solve problems in geometry.
 	\[ \ell \colon \vec{r} = \vec{a} + \lambda \vec{m}, \quad \lambda \in \R \] 
 	where \(\vec{r}\) denotes the position vector of a point in \(\ell\). 
 \end{defn}
+
+\begin{eg}
+	The set of points with position vector \(\vec{r}\) satisfy the equation
+	\[ \ell \colon \vec{r} = \cvec{1 \\ 2 \\ 1} + \lambda \cvec{3 \\ 1 \\ 2}, \quad \lambda \in \R \] 
+	form the line \(\ell\).
+	\begin{enumerate}
+		\item The point \((1, 2, 1)\) is on the line \(\ell\) when \(\lambda = 0\).
+		\item The point \((4, 3, 3)\) is on the line \(\ell\) when \(\lambda = 1\).
+		\item The point \((0, 1, 0)\) is \emph{not} on the line \(\ell\), as there is no value for \(\lambda\) such that \(\vec{r} = \cvec{0 \\ 1 \\ 0}\).
+	\end{enumerate}
+\end{eg}
+
+From Definition \ref{defn:line}, we can write it out with column vectors as 
+\[ \ell \colon \cvec{x \\ y \\ z} = \cvec{a_1 \\ a_2 \\ a_3} + \lambda \cvec{m_1 \\ m_2 \\ m_3} \implies \cvec{x \\ y \\ z} = \cvec{a_1 + \lambda m_1 \\ a_2 + \lambda m_2 \\ a_3 + \lambda m_3} \implies 
+\begin{cases}
+	x = a_1 + \lambda m_1, \\
+	y = a_2 + \lambda m_2, \\
+	z = a_3 + \lambda m_3.
+\end{cases}\] 
+The set of three equations for \(x, y, z\) also can define the line \(\ell\).
+
+\begin{defn}[Parametric Equation of a Line] \label{defn:linep}
+	From the above derivation, the line \(\ell\) can be expressed in its \textbf{parametric equation} as
+	\[ \ell \colon 
+	\begin{cases}
+		x = a_1 + \lambda m_1, \\
+		y = a_2 + \lambda m_2, \\
+		z = a_3 + \lambda m_3.
+	\end{cases}\] 
+	where \(\lambda \in \R\).
+\end{defn}
+From Definition \ref{defn:linep}, we can set \(\lambda\) as the subject, yielding
+\[ \lambda = \frac{x - m_1}{a_1} = \frac{y - m_2}{a_2} = \frac{z - m_3}{a_3} \] 
+which also has enough information to tell us about the line \(\ell\).
+\begin{defn}[Cartesian Equation of a Line]
+	\begin{enumerate}
+		\item The line \(\ell\) can also be expressed in the \textbf{Cartesian form}:
+		\[ \ell \colon \frac{x - m_1}{a_1} = \frac{y - m_2}{a_2} = \frac{z - m_3}{a_3} \] 
+		for nonzero \(v_1\), \(v_2\), or \(v_3\).
+		\item If \(m_1\) or \(m_2\) or \(m_3\) is equal to zero, then \(x = m_1\) or \(y = m_2\) or \(z = m_3\).
+	\end{enumerate}
+\end{defn}
+
+\begin{eg}
+	The line \(\ell\) is defined by
+	\[ \ell \colon \vec{r} = \cvec{0 \\ 1 \\ 3} + \lambda \cvec{2 \\ 0 \\ 1}, \quad \lambda \in \R. \]
+	Express \(\ell\) in the parametric and Cartesian forms.
+	\begin{soln}
+		Based on Definition \ref{defn:linep}, 
+		\[ \ell \colon 
+		\begin{cases}
+			x = 2 \lambda, \\
+			y = 1, \\
+			z = 3 + \lambda.
+		\end{cases}\] 
+		where \(\lambda \in \R\).
+
+		For the Cartesian form, we have
+		\[ \ell \colon \frac{x}{2} = \frac{z - 3}{1}, y = 1. \] 
+	\end{soln}
+\end{eg}
+
+\section{Planes}
+\begin{disc}
+	Let us revisit Discussion \ref{disc:line}.
+
+	We know that we can define a line \(\ell\) in an equation of the form 
+	\[ \ell \colon \vec{r} = \vec{a} + \lambda \vec{m_1}, \quad \lambda \in \R. \] 
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[-latex, thick] (0,0) node[below] {\(O\)} -- (1,1) node[above right] {\(A\)};
+			\draw (-1,3) -- (2,0) node[below right] {\(\ell\)};
+			\draw[latex-, thick] (0,2.3) -- (1,1.3) node[above right, pos=0.5] {\(\vec{m}_1\)};
+			\fill (0,0) circle (0.05);
+		\end{tikzpicture}
+		\caption{A line \(\ell\) that passes through the point \(A\) with position vector \(\vec{a}\) and is parallel to \(\vec{m}_1\).}
+	\end{figure}
+
+	Let us add another vector \(\vec{m}_2\) that is not parallel to \(\vec{m}_1\). 
+	What happens now?
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[-latex, thick] (0,0) node[below] {\(O\)} -- (1,1) node[above right] {\(A\)};
+			\draw (-1,3) -- (2,0) node[below right] {\(\ell\)};
+			\draw[latex-, red, thick] (0,2) -- (1,1) node[above right, pos=0.5] {\(\vec{m}_1\)};
+			\draw[-latex, blue, thick] (0,2) -- (2,3) node[above left, pos=0.5] {\(\vec{m}_2\)};
+			\fill (0,0) circle (0.05);
+		\end{tikzpicture}
+		\caption{The diagram for \(\vec{a} + \vec{m}_1 + \vec{m}_2\).}
+	\end{figure}
+	Let us consider the equation
+	\[ \vec{a} + \lambda \vec{m}_1 + \mu \vec{m}_2\]
+	where \(\lambda\) and \(\mu\) are real numbers.
+	We fix \(\mu = 1\) for now, and look at what happens when \(\lambda\) varies.
+	We can trace out a line that is parallel to the original line \(\ell\).
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[-latex, thick] (0,0) node[below] {\(O\)} -- (1,1) node[above right] {\(A\)};
+			\draw (-1,3) -- (2,0) node[below right] {\(\ell\)};
+			\draw (1,4) -- (4,1) node[below right] {\(\ell'\)};
+			\draw[latex-, red, thick] (0,2) -- (1,1) node[below left, pos=0.5] {\(\vec{m}_1\)};
+			\foreach[count=\i] \x in {-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, ..., 2}{
+				\draw[-latex, blue, thick] (\x,{-\x + 2}) -- ++(2,1);
+			}
+			\fill (0,0) circle (0.05);
+		\end{tikzpicture}
+		\caption{For various \(\lambda\) and a fixed \(\mu\), we can trace out \(\ell'\).}
+	\end{figure}
+
+	Now let's set \(\mu = 2\).
+	This is equivalent to stretching out all the blue arrows in the figure by a factor of two.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[-latex, thick] (0,0) node[below] {\(O\)} -- (1,1) node[above right] {\(A\)};
+			\draw (-1,3) -- (2,0) node[below right] {\(\ell\)};
+			\draw (1,4) -- (4,1) node[below right] {\(\ell'\) (when \(\mu = 1\))};
+			\draw (3,5) -- (6,2) node[below right] {\(\ell''\) (when \(\mu = 2\))};
+			\draw[latex-, red, thick] (0,2) -- (1,1) node[below left, pos=0.5] {\(\vec{m}_1\)};
+			\foreach[count=\i] \x in {-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, ..., 2}{
+				\draw[-latex, blue, thick] (\x,{-\x + 2}) -- ++(2,1);
+			}
+			\foreach[count=\i] \x in {-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, ..., 2}{
+				\draw[-latex, blue, thick] (\x,{-\x + 2}) -- ++(4,2);
+			}
+			\fill (0,0) circle (0.05);
+		\end{tikzpicture}
+		\caption{Changing \(\mu\), we can get more lines but also parallel to \(\ell\).}
+	\end{figure}
+	
+	We can repeat this for all values of \(\mu\).
+	Eventually, we get a lot of lines that are parallel to \(\ell\).
+	The \emph{union} of all these lines  will form a plane.
+
+\end{disc}
 \end{document}
