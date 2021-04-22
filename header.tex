@@ -1,0 +1,126 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{mdframed}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mdframed}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{ulem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{contour}
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\sisetup{list-final-separator = {, and}}
+
+\pgfplotsset{compat = 1.17}
+
+% Theorems
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{fact}[defn]{Fact}
+\newtheorem{law}[defn]{Law}
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{alg}[defn]{Algorithm}
+\newtheorem{eg}[defn]{Example}
+\newtheorem{exc}[defn]{Exercise}
+\newtheorem{disc}[defn]{Discussion}
+
+\theoremstyle{plain}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+\newtheorem*{nb}{Note}
+\newtheorem*{hint}{Hint}
+\newtheorem*{warn}{Warning}
+\newtheorem*{soln}{Solution}
+
+% Stylistic typographical choices
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\emptyset}{\varnothing}
+
+% Physical Constants
+\newcommand{\kb}{\ensuremath{k_\mathrm{B}}}
+
+% Frequently used sets
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\sbn}[1]{\ensuremath{\left\{ #1 \right}\}}
+\newcommand{\pws}[1]{\ensuremath{\mathcal{P}\!\left( #1 \right)}}
+
+% Common Functions
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+% Calculus
+\newcommand{\dd}[2]{\ensuremath{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}
+\newcommand{\dn}[3]{\ensuremath{\frac{\mathrm{d}^{#3} #1}{\mathrm{d} #2^{#3}}}}
+\newcommand{\pdd}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}
+\newcommand{\pdn}[3]{\ensuremath{\frac{\partial^{#3} #1}{\partial #2^{#3}}}}
+\newcommand{\ddt}[1]{\ensuremath{\frac{\mathrm{d} #1}{\mathrm{d}t}}}
+\newcommand{\ddx}[1]{\ensuremath{\frac{\mathrm{d} #1}{\mathrm{d}x}}}
+\newcommand{\pddt}[1]{\ensuremath{\frac{\partial  #1}{\partial t}}}
+\newcommand{\pddx}[1]{\ensuremath{\frac{\partial  #1}{\partial x}}}
+\newcommand{\dx}{\ensuremath{\,\mathrm{d}x}}
+\newcommand{\dt}{\ensuremath{\,\mathrm{d}t}}
+
+% Vector Calc
+\newcommand{\grad}{\nabla}
+\newcommand{\dvg}{\nabla \cdot}
+\newcommand{\curl}{\nabla \times}
+
+% Algebra
+\newcommand{\cen}[2]{\ensuremath{ \mathrm{C}_{#1}{\left( #2 \right)}}}
+\newcommand{\nor}[2]{\ensuremath{ \mathrm{N}_{#1}{\left( #2 \right)}}}
+\DeclarePairedDelimiter{\cgen}{\langle}{\rangle}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\orb}{\mathcal{O}}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Char}{Char}
+
+% Linear Alg
+\newcommand{\mat}[1]{\ensuremath{\mathbf{ #1 }}}
+\newcommand{\cvec}[1]{\ensuremath{\begin{pmatrix} #1 \end{pmatrix}}}
+\newcommand{\ijk}[3]{\ensuremath{#1 \hat{\imath} + #2 \hat{\jmath} + #3 \hat{k}}}
+\newcommand{\spn}[1]{\ensuremath{\mathrm{span}\!\left( #1 \right)}}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\rank}{rank}
+
+% Statistics
+\newcommand{\p}[1]{\ensuremath{\mathrm{P}\!\left( #1 \right)}}
+\newcommand{\E}[1]{\ensuremath{\mathrm{E}\!\left( #1 \right)}}
+\newcommand{\var}[1]{\ensuremath{\mathrm{Var}\!\left( #1 \right)}}
+
+% Quantum
+\DeclareMathOperator{\Ham}{\ensuremath{\hat{\mathit{H}}}}
+\DeclareMathOperator{\Rop}{\ensuremath{\hat{\mathbf{r}}}}
+\DeclareMathOperator{\Pop}{\ensuremath{\hat{\mathbf{p}}}}
+\DeclareMathOperator{\Kin}{\ensuremath{\hat{\mathit{T}}}}
+\DeclareMathOperator{\Pot}{\ensuremath{\hat{\mathit{V}}}}
+\DeclareMathOperator{\TotE}{\ensuremath{\hat{\mathit{E}}}}
+\DeclareMathOperator{\Lop}{\ensuremath{\hat{\mathbf{L}}}}
+\DeclareMathOperator{\Sop}{\ensuremath{\hat{\mathbf{S}}}}
