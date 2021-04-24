@@ -366,7 +366,7 @@ You can think that three points are collinear if a straight line can be drawn th
 	\[ \vec{u} \cdot \vec{v} = \abs{\vec{u}} \abs{\vec{v}} \cos \theta. \] 
 \end{defn}
 
-\begin{thm}
+\begin{thm} \label{thm:perptest}
 	Let \(\vec{u}\) and \(\vec{v}\) be vectors separated by an angle \(\theta\).
 	Then
 	\[ \vec{u} \cdot \vec{v} = 0 \iff 
@@ -665,8 +665,8 @@ which also has enough information to tell us about the line \(\ell\).
 	\begin{enumerate}
 		\item The line \(\ell\) can also be expressed in the \textbf{Cartesian form}:
 		\[ \ell \colon \frac{x - m_1}{a_1} = \frac{y - m_2}{a_2} = \frac{z - m_3}{a_3} \] 
-		for nonzero \(v_1\), \(v_2\), or \(v_3\).
-		\item If \(m_1\) or \(m_2\) or \(m_3\) is equal to zero, then \(x = m_1\) or \(y = m_2\) or \(z = m_3\).
+		for nonzero \(\vec{m}_1\), \(\vec{m}_2\), or \(\vec{m}_3\).
+		\item If \(\vec{m}_1\) or \(\vec{m}_2\) or \(\vec{m}_3\) is equal to zero, then \(x = \vec{m}_1\) or \(y = \vec{m}_2\) or \(z = \vec{m}_3\).
 	\end{enumerate}
 \end{defn}
 
@@ -766,6 +766,53 @@ which also has enough information to tell us about the line \(\ell\).
 	We can repeat this for all values of \(\mu\).
 	Eventually, we get a lot of lines that are parallel to \(\ell\).
 	The \emph{union} of all these lines  will form a plane.
-
 \end{disc}
+
+\begin{defn}[Vector Equation of a Plane]
+	A line \(p\) that 
+	\begin{enumerate}
+		\item contains a point with position vector \(\vec{a}\), and
+		\item contains two non-parallel vectors \(\vec{m}_1\) and \(\vec{m_2}\),
+	\end{enumerate}
+	has the \textbf{vector equation}
+	\[ p \colon \vec{r} = \vec{a} + \lambda \vec{m}_1 + \mu \vec{m}_2, \quad \lambda, \mu \in \R \] 
+	where \(\vec{r}\) denotes the position vector of a point in \(p\).
+\end{defn}
+
+\begin{disc}
+	Illustrated in Figure \ref{fig:dpplane}, the plane \(p\) contains a \emph{fixed} point \(A\) with position vector \(\vec{a}\), \emph{any} point \(R\) with position vector \(r\), and a vector \(\vec{n}\) that is perpendicular to \(p\).
+	\begin{figure}[H] 
+		\centering
+		\begin{tikzpicture}[x={(0:1cm)}, y={(45:1cm)}, z={(90:1cm)}]
+			\draw (-4, -2, 5) -- (-4, 2, 5) -- (4, 2, 5) node[right] {\(p\)} -- (4, -2, 5) -- cycle;
+			\draw[thick, -latex] (0, 0, 0) node[below] {\(O\)}-- (1, 1, 5) node[pos=0.5, right] {\(\vec{r}\)};
+			\draw[thick, -latex] (0, 0, 0) -- (-3, -1, 5) node[pos=0.5, left] {\(\vec{a}\)};
+			\draw[dashed] (-3, -1, 5) node[left] {\(A\)} -- (1, 1, 5) node[right] {\(R\)};
+			\draw[thick, -latex] (3.5, 1.9, 5) -- (3.5, 1.9, 6) node[right] {\(\vec{n}\)};
+		\end{tikzpicture}
+		\caption{Plane \(p\) that contains \(A\), \(R\), and is perpendicular to \(\vec{n}\).}
+		\label{fig:dpplane}
+	\end{figure}
+
+	We look at the vector \(\overrightarrow{AR} = \vec{r} - \vec{a}\).
+	Since \(\overrightarrow{AR}\) is perpendicular to \(\vec{n}\), by Theorem \ref{thm:perptest}, 
+	\begin{align*}
+		\overrightarrow{AR} \cdot \vec{n} = (\vec{r} - \vec{a}) \cdot \vec{n} &= 0 \\
+		\iff \vec{r} \cdot \vec{n} - \vec{a} \cdot \vec{n} &= 0 \\
+		\iff \vec{r} \cdot \vec{n} &= \vec{a} \cdot \vec{n}.
+	\end{align*}
+	But \(\vec{a}\) is fixed (or rather, known), so \(\vec{a} \cdot \vec{n}\) can be replaced by some number \(D\).
+	\[ \vec{r} \cdot \vec{n} = D. \] 
+	This means that any point \(R\) with position vector \(\vec{r}\) is contained in \(p\) if the dot product \(\vec{r} \cdot \vec{n} = D\).
+	We call this the dot product form of the equation of a plane.
+\end{disc}
+
+\begin{defn}[Dot Product Equation of a Plane]
+	Let \(p\) be a plane that contains a point with position vector \(\vec{a}\) and is perpendicular to the vector \(\vec{n}\).
+	Then we can write its \textbf{dot product equation}
+	\[ p \colon \vec{r} \cdot \vec{n} = \vec{a} \cdot \vec{n} \] 
+	where \(\vec{r}\) is the position vector of any point in \(p\).
+\end{defn}
+
+
 \end{document}
